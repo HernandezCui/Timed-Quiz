@@ -9,24 +9,22 @@
 
 <body>
     <!-- High score heeader -->
-        <div class="scores">
-            <button id="view-high-scores">View Highscores</button>
-            <div> Time: <span id="timer">0</span></div>
+    <header>
+        <a href="#highscores-screen">View High Scores</a>
+        <div class="timer"> Time: <span id="timer">0</span></div>
         </div>
-
+    
+    </header>
     
     <!-- Main header -->
-    <header>
+    <main class="quiz">
         <div class= "main" id="start-quiz">
             <h1>Coding Quiz Challenge</h1>
             <p>You will answer to the following code-related questions within the time limit. Any incorrect answers will lead to your score/time to drop by ten seconds!</p>
             <button id="start">Start Quiz</button> 
         </div>
-    </header>
 
-
-    <main>
-        <div class="quiz">
+        <div class="hide">
             <h2 class="question"></h2>
             <div id="choices">
                 <div class="choice1"></div>
@@ -36,16 +34,17 @@
             </div>
         </div>
 
-        <div class="end-of-quiz">
+        <div class="hide" id="end-of-quiz">
             <h3>Finished!</h3>
             <div>Your Final Score: <span id="final-score"></span></div>
             <div>
                 <p>Input Name: <input type="text" id="name"/></p>
                 <button id="submit-score">Submit</button> 
             </div>
+        </div>
 
     <!-- Highscore screen -->
-        <div class="highscores-screen">
+        <div id="highscores-screen">
             <h4>High Scores</h4>
             <ul id="highscores"></ul>
             <button>Return</button>
