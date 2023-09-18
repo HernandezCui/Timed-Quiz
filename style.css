@@ -1,11 +1,14 @@
 * {
 font-family: 'Open Sans', sans-serif;
 }
+.quiz, .highscores-screen {
+    margin: 100px auto 0 auto;
+    max-width: 400px;
+}
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* syling for main page */
+.main {
+    text-align: center;
 }
 
 header a {
@@ -24,6 +27,32 @@ a:hover {
 .timer {
     float:right;
     padding: 25px;
+}
+
+button {
+    display: inline-block;
+    margin: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button:hover {
+    background-color:aqua;
+}
+
+input[type=text] {
+    font: 100;
+}
+
+.hide {
+    display: none;
+}
+
+ul {
+    padding-left: 15px
+    max-height: 600px;
+    overflow: auto;
 }
 
 

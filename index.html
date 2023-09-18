@@ -8,51 +8,51 @@
 </head>
 
 <body>
-    <!-- High score heeader -->
+  
     <header>
-        <a href="#highscores-screen">View High Scores</a>
-        <div class="timer"> Time: <span id="timer">0</span></div>
+    <!-- High scores -->
+        <div id="high-scores" class="hidden">
+            <h1> High Scores </h1>
+            <ol id="score-list"></ol>
+            <button id="clear-scores">Clear Scores</button>
+            <button id="return"> Return </button>
         </div>
-    
+
+    <!-- Timer -->
+        <div id="timer-container">
+            <p>Time: <span id="timer">0</span></p>
+        </div>
+
     </header>
-    
-    <!-- Main header -->
-    <main class="quiz">
-        <div class= "main" id="start-quiz">
-            <h1>Coding Quiz Challenge</h1>
-            <p>You will answer to the following code-related questions within the time limit. Any incorrect answers will lead to your score/time to drop by ten seconds!</p>
-            <button id="start">Start Quiz</button> 
+
+
+    <main>
+<!-- Start quiz main page -->
+        <div class="quiz">
+            <h1> Coding Quiz Challenge </h1>
+            <p> You will answer to the following code-related questions within the time limit. Any incorrect answers will lead to your score/time to drop by ten seconds!</p>
+            <button id="start-button"> Start Quiz</button>
+        </div>    
+
+<!-- Questions -->
+        <div id="questions" class="hidden">
+            <p id="question-text"></p>
+            <div id="answers" class="answers"></div>
         </div>
 
-        <div class="hide">
-            <h2 class="question"></h2>
-            <div id="choices">
-                <div class="choice1"></div>
-                <div class="choice2"></div>
-                <div class="choice3"></div>
-                <div class="choice4"></div>
-            </div>
-        </div>
+<!-- End of quiz -->
+        <div id="end-of-quiz" class="hidden">
+            <h2>End of Quiz</h2>
+            <p>Your Final Score: <span id="final-score"></span></p>
+            <label for="initials"> Enter your initials: </label>
+            <input type="text" id="initials-input">
+            <button id="submit-button">Submit</button>
+        </div>   
 
-        <div class="hide" id="end-of-quiz">
-            <h3>Finished!</h3>
-            <div>Your Final Score: <span id="final-score"></span></div>
-            <div>
-                <p>Input Name: <input type="text" id="name"/></p>
-                <button id="submit-score">Submit</button> 
-            </div>
-        </div>
-
-    <!-- Highscore screen -->
-        <div id="highscores-screen">
-            <h4>High Scores</h4>
-            <ul id="highscores"></ul>
-            <button>Return</button>
-            <button>Clear Scores</button>
-            </div>
-       </div>
     </main>
+
         <script src="script.js"></script>  
+        
     </body>
 
 </html>
