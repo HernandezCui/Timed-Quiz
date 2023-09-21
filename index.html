@@ -8,37 +8,30 @@
 </head>
 
 <body>
-  
     <header>
-    <!-- High scores -->
-        <div id="high-scores" class="hidden">
-            <h1> High Scores </h1>
-            <ol id="score-list"></ol>
-            <button id="clear-scores">Clear Scores</button>
-            <button id="return"> Return </button>
+    <!-- High score header -->
+        <div> 
+            <a href="Highscores.html"><button class="scores-header" id="view-high-scores">View High Scores</button></a>
         </div>
-
     <!-- Timer -->
         <div id="timer-container">
             <p>Time: <span id="timer">0</span></p>
         </div>
-
     </header>
 
-
-    <main>
+    <main class="quiz">
 <!-- Start quiz main page -->
-        <div class="quiz">
+    <div class="main" id="start-quiz">
             <h1> Coding Quiz Challenge </h1>
             <p> You will answer to the following code-related questions within the time limit. Any incorrect answers will lead to your score/time to drop by ten seconds!</p>
             <button id="start-button"> Start Quiz</button>
-        </div>    
-
-<!-- Questions -->
+    </div>
+    <!-- Questions -->
         <div id="questions" class="hidden">
             <p id="question-text"></p>
-            <div id="answers" class="answers"></div>
+            <div id="choices" class="choices"></div>
         </div>
+    </div>
 
 <!-- End of quiz -->
         <div id="end-of-quiz" class="hidden">
@@ -50,9 +43,7 @@
         </div>   
 
     </main>
-
         <script src="script.js"></script>  
-        
-    </body>
+</body>
 
 </html>
