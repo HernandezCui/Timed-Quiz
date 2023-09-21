@@ -3,11 +3,38 @@ body {
 }
 
 .quiz {
-    text-align: center;
+    /* text-align: center; */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#scores {
+    /* text-align: center; */
     max-width: 600px;
     margin: 0 auto;
 }
 
 .hidden {
     display: none;
+}
+
+.main {
+    text-align: center;
+}
+
+.scores-header {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+#timer-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+button {
+    display: inline-block;
+    
 }
