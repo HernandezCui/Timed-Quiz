@@ -27,3 +27,7 @@ var scoresList = document.getElementById("score-list");
 var clearScoresBtn = document.getElementById("clear-scores");
 var goBackBtn = document.getElementById("return");
 
+startBtn.addEventListener("click", startQuiz);
+submitScoreBtn.addEventListener("click", saveScore);
+clearScoresBtn.addEventListener("click", clearScores);
+goBackBtn.addEventListener("click", goBackToQuiz);
