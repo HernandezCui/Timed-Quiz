@@ -53,9 +53,8 @@ var initialsInput = document.getElementById("initials-input");
 var submitButton = document.getElementById("submit-button");
 var finalScoreElement = document.getElementById("final-score");
 
-// Start Quiz 
-startButton.addEventListener("click", startQuiz);
 
+// start quiz 
 function startQuiz() {
     startButton.style.display = "none";
     questionsContainer.classList.remove("hidden");
@@ -98,31 +97,21 @@ function nextQuestion() {
     }
 }
 
-// Function to check the answer
-function checkAnswer(selectedIndex) {
-    var question = questions[currentQuestionIndex];
-    if (selectedIndex === questions.correctAnswer) {
-        score++;
-    } else {
-        timeLeft -= penaltyTime;
-    }
-    currentQuestionIndex++;
-    nextQuestion();
-}
-
 // function to end quiz 
 function endQuiz() {
     clearInterval(timerInterval);
-    questionTextElement.textContent = "";
-    choicesElement.innerHTML = "";
-    finalScoreElement.textContent = score;
+    questionsContainer.classList.add("hidden");
     endOfQuizElement.classList.remove("hidden");
+    finalScoreElement.textContent = timeLeft;
 }
 
-// Initials submission 
-submitButton.addEventListener("click", () => {
-    var initials = initialsInput.value;
+// Event listeners
+startButton.addEventListener("click", startQuiz);
 
+submitButton.addEventListener("click", function() {
+    var initials = initialsInput.value;
+    localStorage.setItem("highScores", JSON.stringify([...existingScores, { initials, score: timeLeft }]));
+    window.location.href = "Highscores.html";
 });
 
 
