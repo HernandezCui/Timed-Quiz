@@ -1,5 +1,5 @@
 // Quiz data variables 
-var questions = [
+var quizQuestions = [
     {
         question: "What does HTML stand for?",
         choices: ["Hyper Text Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language"],
@@ -58,7 +58,8 @@ var finalScoreElement = document.getElementById("final-score");
 function startQuiz() {
     startButton.style.display = "none";
     questionsContainer.classList.remove("hidden");
-    setNextQuestion();
+    endOfQuizElement.classList.add("hidden");
+    nextQuestion();
     startTimer();
 }
 
@@ -79,18 +80,19 @@ function nextQuestion() {
         var currentQuestion = quizQuestions[currentQuestionIndex];
         questionTextElement.textContent = currentQuestion.question;
         choicesElement.innerHTML = "";
+        // display answers
         currentQuestion.choices.forEach((choice, index) => {
             var choiceButton = document.createElement("button"); 
             choiceButton.textContent = choice; 
             choiceButton.addEventListener("click", () => {
                 if (index === currentQuestion.correctAnswer) {
                     currentQuestionIndex++; // move to next question, if answer is correct
-                    setNextQuestion();
+                    nextQuestion();
                 } else {
                     timeLeft -= 10; // subtract 10 seconds if answer is incorrect
                 }
             });
-            choicesContainer.appendChild(choiceButton);
+            choicesElement.appendChild(choiceButton);
         });
     } else {
         endQuiz();
