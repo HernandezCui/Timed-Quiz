@@ -23,3 +23,18 @@ var initialsInput = document.getElementById("initials-input");
 var submitButton = document.getElementById("submit-button");
 var finalScoreElement = document.getElementById("final-score");
 
+// Start Quiz 
+startButton.addEventListener("click", startQuiz);
+
+function startQuiz() {
+    startButton.classList.add("hidden");
+    endOfQuizElement.classList.add("hidden");
+    timeLeft = 60; // Setting initial time in seconds 
+    score = 0; 
+    currentQuestionIndex = 0;
+    updateTimer();
+    nextQuestion();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+
