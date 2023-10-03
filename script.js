@@ -87,5 +87,11 @@ function endQuiz() {
     endOfQuizElement.classList.remove("hidden");
 }
 
+// Initials submission 
+submitButton.addEventListener("click", () => {
+    var initials = initialsInput.value;
+    
+})
+
 
 
