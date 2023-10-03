@@ -63,29 +63,35 @@ function startQuiz() {
     startTimer();
 }
 
-// Updating the timer function 
-function updateTimer() {
-    timerElement.textContent = timeLeft;
-    if (timeLeft <= 0) {
-        endQuiz();
-    } else {
+// Timer function 
+function startTimer() {
+    timerInterval = setInterval(function() {
         timeLeft--;
-    }
+        timerElement.textContent = timeLeft;
+        if (timeLeft <=0) {
+            endQuiz();
+        }
+    }, 1000);
 }
 
 // function to display next questions 
 function nextQuestion() {
-    if (currentQuestionIndex < questions.length) {
-        var question = questions[currentQuestionIndex];
-        questionTextElement.textContent = question.question;
+    if (currentQuestionIndex < quizQuestions.length) {
+        var currentQuestion = quizQuestions[currentQuestionIndex];
+        questionTextElement.textContent = currentQuestion.question;
         choicesElement.innerHTML = "";
-        question.choices.forEach((choice, index) => {
+        currentQuestion.choices.forEach((choice, index) => {
             var choiceButton = document.createElement("button"); 
             choiceButton.textContent = choice; 
             choiceButton.addEventListener("click", () => {
-                checkAnswer(index);
+                if (index === currentQuestion.correctAnswer) {
+                    currentQuestionIndex++; // move to next question, if answer is correct
+                    setNextQuestion();
+                } else {
+                    timeLeft -= 10; // subtract 10 seconds if answer is incorrect
+                }
             });
-            choicesElement.appendChild(choiceButton);
+            choicesContainer.appendChild(choiceButton);
         });
     } else {
         endQuiz();
