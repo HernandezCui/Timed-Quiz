@@ -48,6 +48,7 @@ var endOfQuizElement = document.getElementById("end-of-quiz");
 var initialsInput = document.getElementById("initials-input");
 var submitButton = document.getElementById("submit-button");
 var finalScoreElement = document.getElementById("final-score");
+var initialsInput = document.getElementById("initials-input");
 // var quizTitle = document.getElementById("quiz-title");
 // var quizDescription = document.getElementById("quiz-description");
 
@@ -116,15 +117,20 @@ function endQuiz() {
     finalScoreElement.textContent = timeLeft;
 }
 
+
 // Event listeners
 startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener("click", saveHighScore);
+initialsInput.addEventListener("onkeyup", checkForEnter);
 
 
-var existingScores = [];
-submitButton.addEventListener("click", function() {
-    var initials = initialsInput.value;
-    localStorage.setItem("highScores", JSON.stringify([...existingScores, { initials, score: timeLeft }]));
-    window.location.href = "Highscores.html";
-});
+
+
+// var existingScores = [];
+// submitButton.addEventListener("click", function() {
+//     var initials = initialsInput.value;
+//     localStorage.setItem("highScores", JSON.stringify([...existingScores, { initials, score: timeLeft }]));
+//     window.location.href = "Highscores.html";
+// });
 
 
