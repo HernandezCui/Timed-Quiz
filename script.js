@@ -1,5 +1,5 @@
 // Quiz data variables 
-var quizQuestions = [
+var questions = [
     {
         question: "What does HTML stand for?",
         choices: ["Hyper Text Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language"],
@@ -37,10 +37,6 @@ var quizQuestions = [
     },
 ];
 
-// other global variables 
-let currentQuestionIndex = 0;
-let timerInterval;
-let timeLeft = 60; // Initial time in seconds 
 
 // DOM Elements 
 var startButton = document.getElementById("start-button");
@@ -52,13 +48,25 @@ var endOfQuizElement = document.getElementById("end-of-quiz");
 var initialsInput = document.getElementById("initials-input");
 var submitButton = document.getElementById("submit-button");
 var finalScoreElement = document.getElementById("final-score");
-
+// var quizTitle = document.getElementById("quiz-title");
+// var quizDescription = document.getElementById("quiz-description");
 
 // start quiz 
 function startQuiz() {
     startButton.style.display = "none";
+    // quizTitle.style.display = "none";
+    // quizDescription.style.display = "none";
+    var landingScreen = document.getElementById("start-quiz");
+    landingScreen.setAttribute("class", "hide");
     questionsContainer.classList.remove("hidden");
     endOfQuizElement.classList.add("hidden");
+
+    // Reset timer and currentQuestionIndex
+    timeLeft = 60;
+    timerElement.textContent = timeLeft;
+    currentQuestionIndex = 0;
+
+
     nextQuestion();
     startTimer();
 }
@@ -76,10 +84,11 @@ function startTimer() {
 
 // function to display next questions 
 function nextQuestion() {
-    if (currentQuestionIndex < quizQuestions.length) {
-        var currentQuestion = quizQuestions[currentQuestionIndex];
+    if (currentQuestionIndex < questions.length) {
+        var currentQuestion = questions[currentQuestionIndex];
         questionTextElement.textContent = currentQuestion.question;
         choicesElement.innerHTML = "";
+
         // display answers
         currentQuestion.choices.forEach((choice, index) => {
             var choiceButton = document.createElement("button"); 
@@ -110,11 +119,12 @@ function endQuiz() {
 // Event listeners
 startButton.addEventListener("click", startQuiz);
 
+
+var existingScores = [];
 submitButton.addEventListener("click", function() {
     var initials = initialsInput.value;
     localStorage.setItem("highScores", JSON.stringify([...existingScores, { initials, score: timeLeft }]));
     window.location.href = "Highscores.html";
 });
-
 
 
