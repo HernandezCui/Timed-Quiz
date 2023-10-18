@@ -1,22 +1,35 @@
-// DOM Elements
-var scoresList = document.getElementById("score-list");
-var clearScoresButton = document.getElementById("clear-scores");
-var returnButton = document.getElementById("return");
+// DOM Elements 
+var scoresContainer = document.getElementById("scores");
+var scoreList = document.getElementById("score-list");
+var clearScoresBtn = document.getElementById("clear-scores");
+var returnBtn = document.getElementById("return");
 
-// Load and display high scores when the page is loaded
-function displayHighScores() {
-    var storedHighScores = localStorage.getItem("highScores");
-    if (storedHighScores) {
-        highScores = JSON.parse(storedHighScores);
-        highScores.sort((a,b) => b.score - a.score);// sort high scores in descending order
 
-//display high scores in list 
-        scoresList.innerHTML = ""; 
-        for (var i = 0; i < highScores.length; i++) {
-            var scoreItem = document.createElement("li");
-            scoreItem.textContent = highScores[i].initials + " - " + highScores[i].score;
-            scoresList.appendChild(scoreItem);
-        }
-    }
+// Clear button
+function clearScores() {
+    localStorage.removeItem("highScores");
+    scoreList.innerHTML = "";
 }
 
+clearScoresBtn.addEventListener("click", clearScores);
+
+// Return button 
+function returnToMain() {
+    window.location.href = "index.html";
+}
+
+returnBtn.addEventListener("click", returnToMain);
+
+// Load And display scores
+document.addEventListener("DOMContentLoaded", function () {
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    
+    if (highScores.length > 0) {
+        scoresContainer.classList.remove("hidden");
+        highScores.forEach(function (score, index) {
+            var listItem = document.createElement("li");
+            listItem.textContent = `${index + 1}. ${score.initials}: ${score.score}`;
+            scoreList.appendChild(listItem);
+        });
+    }
+});

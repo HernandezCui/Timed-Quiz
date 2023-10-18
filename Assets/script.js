@@ -51,7 +51,7 @@ var currentQuestionIndex = 0;
 var timerInterval;
 var timeLeft = 30;
 var total = 0;
-var highScores = [];
+// var highScores = [];
 
 
 // start quiz 
@@ -136,6 +136,7 @@ function submitScore() {
     var score = timeLeft;
 
     if (initials) {
+        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
         var scoreData = {initials: initials, score: score };
         highScores.push(scoreData);
         highScores.sort((a, b) => b.score - a.score);
